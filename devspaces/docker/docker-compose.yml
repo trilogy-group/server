@@ -1,0 +1,14 @@
+version: '3.2'
+services:  
+  travelmate:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    volumes:
+      - type: bind
+        source: ../../
+        target: /data
+    container_name: travelmate-dev
+    expose:
+      - "8000"
+    network_mode: host
