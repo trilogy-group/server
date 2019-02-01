@@ -71,6 +71,7 @@ pip3 install -r requirements.txt
 
 8. Prepare database
 ```bash
+service postgresql start
 python3 manage.py makemigrations
 python3 manage.py migrate
 ```
