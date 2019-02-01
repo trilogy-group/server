@@ -5,7 +5,7 @@ LABEL description="This file generates a docker image containing everything need
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip postgresql && \
+    apt-get install -y python3 python3-pip postgresql nano && \
     apt-get clean    
 
 USER postgres
@@ -15,5 +15,7 @@ RUN service postgresql start && \
     psql -c "alter user nomad with encrypted password 'pass';" && \
     psql -c "grant all privileges on database nomad to nomad;" && \
     psql -c "ALTER USER nomad CREATEDB;"   
+
+USER root
 
 CMD service postgresql start && tail -f /dev/null
